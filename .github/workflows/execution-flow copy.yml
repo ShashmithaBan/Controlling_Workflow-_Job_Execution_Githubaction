@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Website Deployment (continue on error)
 on:
   push:
     branches:
@@ -34,10 +34,10 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test code
+        continue_on_error: true
         id: code_testing
         run: npm run test
       - name: Upload test report
-        if: failure() && steps.code_testing.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
