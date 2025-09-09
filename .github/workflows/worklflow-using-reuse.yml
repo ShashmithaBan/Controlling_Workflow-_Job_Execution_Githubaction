@@ -1,4 +1,4 @@
-name: Website Deployment (continue on error)
+name: Reusable workflow working
 on:
   push:
     branches:
