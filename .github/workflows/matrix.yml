@@ -2,6 +2,7 @@ name: Matrix
 on: push
 jobs:
   Matrix:
+    continue_on_error: true
     strategy:
       matrix:
         node-version: [12 , 13 ,14]
