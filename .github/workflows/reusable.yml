@@ -4,5 +4,5 @@ on: workflow_call
 jobs:
   runs-on: ubunutu-latest
   steps:
-    - name: Deploying
+    - name: Output information
       run: echo "Deploying successfully"
