@@ -1,0 +1,8 @@
+name : Reusable deploy
+on: workflow_call
+
+jobs:
+  runs-on: ubunutu-latest
+  steps:
+    - name: Deploying
+      run: echo "Deploying successfully"
