@@ -16,5 +16,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact-item }}
+      - name: Output files
+        run: ls
       - name: Output information
         run: echo "Deploying successfully"
