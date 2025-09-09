@@ -1,19 +1,20 @@
-name : Reusable deploy
-on: 
+name: Reusable deploy
+on:
   workflow_call:
-    inputs: 
+    inputs:
       artifact-item:
-      description: "the artifact downloading files"
-      required: false
-      default: dist
-      type: string
+        description: "The artifact downloading files"
+        required: false
+        default: dist
+        type: string
+
 jobs:
-      Deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/download-artifact@v4
-          with: 
-            name: ${{ inputs.artifact-item }} 
-        - name: Output information
-          run: echo "Deploying successfully"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-item }}
+      - name: Output information
+        run: echo "Deploying successfully"
