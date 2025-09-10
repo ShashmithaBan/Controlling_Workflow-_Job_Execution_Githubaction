@@ -10,13 +10,13 @@ on:
     outputs:
       result:
         description: The result of the deployment output
-        value: ${{jobs.deploy.outputs.outcome}}
+        value: ${{ jobs.deploy.outputs.outcome }}
 
 jobs:
   deploy:
-    outputs:
-      outcome: ${{ steps.set-result.output.step-result }}
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -27,4 +27,5 @@ jobs:
       - name: Output information
         run: echo "Deploying successfully"
       - name: Set Result Output
-        run: echo "{step-result}={success}" >> $GITHUB_OUTPUT
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
